@@ -1,0 +1,22 @@
+  const headRef = useRef<HTMLHeadingElement | null>(null);
+
+  useGSAP(() => {
+    gsap.fromTo(
+      headRef.current,
+      {
+        y: 50,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 2,
+        ease: "sine",
+        scrollTrigger: {
+          trigger: headRef.current,
+          start: "top 70%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
+  }, []);

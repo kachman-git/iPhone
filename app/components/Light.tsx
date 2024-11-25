@@ -1,5 +1,4 @@
 import { Environment, Lightformer } from "@react-three/drei";
-import React from "react";
 
 const Lights: React.FC = () => {
   return (
@@ -29,7 +28,6 @@ const Lights: React.FC = () => {
           />
         </group>
       </Environment>
-
       <spotLight
         position={[-2, 10, 5]}
         angle={0.15}

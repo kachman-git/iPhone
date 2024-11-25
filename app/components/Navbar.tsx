@@ -1,9 +1,10 @@
-import { navLists } from "@/constants";
+import { navLists } from "../constants";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 import { appleImg, bagImg, searchImg } from "../utils/index";
+import { navListsProps } from "@/types/constantsType";
 
 const Navbar = () => {
   return (
@@ -18,7 +19,7 @@ const Navbar = () => {
         />
       </Link>
       <div className="md:flex space-x-10 text-sm items-center hidden">
-        {navLists.map((nav, index) => (
+        {navLists.map((nav: navListsProps, index: number) => (
           <ul key={index}>
             <li className="text-gray hover:text-white transition-colors">
               <Link href={"#"}>{nav}</Link>

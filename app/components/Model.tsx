@@ -3,29 +3,26 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ModelView from "./ModelView";
 import { useEffect, useRef, useState } from "react";
-import { yellowImg } from "../utils";
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { View } from "@react-three/drei";
 import { models, sizes } from "../constants";
 import { animateWithGsapTimeline } from "../utils/animations";
-import { ModelType } from "types/constantsType";
+import { ModelItem } from "../../types/constantsType";
 
-const Model = () => {
-  const [size, setSize] = useState<"small" | "large">("small");
-  const [model, setModel] = useState<ModelType>({
+const Model: React.FC = () => {
+  const [size, setSize] = useState<string>("small");
+  const [model, setModel] = useState<ModelItem>({
     title: "iPhone 15 Pro in Natural Titanium",
     color: ["#8F8A81", "#FFE7B9", "#6F6C64"],
-    img: yellowImg,
+    img: "/path/to/yellow-img.jpg", // Ensure this matches `yellowImg` import
   });
 
-  const headRef = useRef<HTMLHeadingElement | null>(null);
+  const cameraControlSmall = useRef<THREE.Object3D | null>(null);
+  const cameraControlLarge = useRef<THREE.Object3D | null>(null);
 
-  const cameraControlSmall = useRef<THREE.Camera>();
-  const cameraControlLarge = useRef<THREE.Camera>();
-
-  const small = useRef<THREE.Group>(new THREE.Group());
-  const large = useRef<THREE.Group>(new THREE.Group());
+  const small = useRef(new THREE.Group());
+  const large = useRef(new THREE.Group());
 
   const [smallRotation, setSmallRotation] = useState<number>(0);
   const [largeRotation, setLargeRotation] = useState<number>(0);
@@ -38,9 +35,7 @@ const Model = () => {
         transform: "translateX(-100%)",
         duration: 2,
       });
-    }
-
-    if (size === "small") {
+    } else if (size === "small") {
       animateWithGsapTimeline(tl, large, largeRotation, "#view2", "#view1", {
         transform: "translateX(0)",
         duration: 2,
@@ -49,30 +44,13 @@ const Model = () => {
   }, [size]);
 
   useGSAP(() => {
-    gsap.fromTo(
-      headRef.current,
-      {
-        y: 50,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 2,
-        ease: "sine",
-        scrollTrigger: {
-          trigger: headRef.current,
-          start: "top 70%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
+    gsap.to("#heading", { y: 0, opacity: 1 });
   }, []);
 
   return (
     <section className="common-padding">
       <div className="screen-max-width">
-        <h1 ref={headRef} className="section-heading">
+        <h1 id="heading" className="section-heading">
           Take a closer look.
         </h1>
 
@@ -87,7 +65,6 @@ const Model = () => {
               item={model}
               size={size}
             />
-
             <ModelView
               index={2}
               groupRef={large}
@@ -97,7 +74,6 @@ const Model = () => {
               item={model}
               size={size}
             />
-
             <Canvas
               className="w-full h-full"
               style={{
@@ -108,7 +84,7 @@ const Model = () => {
                 right: 0,
                 overflow: "hidden",
               }}
-              eventSource={document.getElementById("root") as HTMLElement}
+              eventSource={document.getElementById("root")!}
             >
               <View.Port />
             </Canvas>
@@ -119,7 +95,7 @@ const Model = () => {
 
             <div className="flex-center">
               <ul className="color-container">
-                {models.map((item, i) => (
+                {models.map((item: any, i: number) => (
                   <li
                     key={i}
                     className="w-6 h-6 rounded-full mx-2 cursor-pointer"
@@ -129,7 +105,7 @@ const Model = () => {
                 ))}
               </ul>
 
-              <button className="size-btn-container">
+              <div className="size-btn-container">
                 {sizes.map(({ label, value }) => (
                   <span
                     key={label}
@@ -138,12 +114,12 @@ const Model = () => {
                       backgroundColor: size === value ? "white" : "transparent",
                       color: size === value ? "black" : "white",
                     }}
-                    onClick={() => setSize(value as "small" | "large")}
+                    onClick={() => setSize(value)}
                   >
                     {label}
                   </span>
                 ))}
-              </button>
+              </div>
             </div>
           </div>
         </div>

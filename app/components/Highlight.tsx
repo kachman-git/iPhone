@@ -1,5 +1,5 @@
 "use client";
-import { rightImg, watchImg } from "@/utils";
+import { rightImg, watchImg } from "../utils";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
@@ -24,10 +24,11 @@ function Highlight() {
       {
         y: 0,
         opacity: 1,
-        duration: 2,
+        duration: 2.6,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: textRef.current,
-          start: "top 76%",
+          start: "top 70%",
           toggleActions: "play none none none",
         },
       }
@@ -45,12 +46,12 @@ function Highlight() {
         {
           opacity: 1,
           y: 0,
-          duration: 2,
+          duration: 2.6,
           ease: "power2.out",
           stagger: 0.5,
           scrollTrigger: {
             trigger: groupRef.current,
-            start: "top 76%",
+            start: "top 70%",
             toggleActions: "play none none none",
           },
         }

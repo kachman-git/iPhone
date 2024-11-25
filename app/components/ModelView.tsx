@@ -1,3 +1,4 @@
+import React, { RefObject } from "react";
 import {
   Html,
   OrbitControls,
@@ -8,17 +9,16 @@ import * as THREE from "three";
 import Lights from "./Light";
 import Loader from "./Loader";
 import IPhone from "./Iphone";
-import React, { Suspense } from "react";
 
-type ModelViewProps = {
+interface ModelViewProps {
   index: number;
-  groupRef: React.MutableRefObject<THREE.Group>;
+  groupRef: RefObject<THREE.Group>;
   gsapType: string;
-  controlRef: React.MutableRefObject<any>;
-  setRotationState: React.Dispatch<React.SetStateAction<number>>;
-  size: "small" | "large";
-  item: { title: string; color: string[]; img: string };
-};
+  controlRef: RefObject<any>;
+  setRotationState: (angle: number) => void;
+  size: string;
+  item: any;
+}
 
 const ModelView: React.FC<ModelViewProps> = ({
   index,
@@ -36,11 +36,8 @@ const ModelView: React.FC<ModelViewProps> = ({
       className={`w-full h-full absolute ${index === 2 ? "right-[-100%]" : ""}`}
     >
       <ambientLight intensity={0.3} />
-
       <PerspectiveCamera makeDefault position={[0, 0, 4]} />
-
       <Lights />
-
       <OrbitControls
         makeDefault
         ref={controlRef}
@@ -48,21 +45,23 @@ const ModelView: React.FC<ModelViewProps> = ({
         enablePan={false}
         rotateSpeed={0.4}
         target={new THREE.Vector3(0, 0, 0)}
-        onEnd={() => setRotationState(controlRef.current.getAzimuthalAngle())}
+        onEnd={() => {
+          const angle = controlRef.current?.getAzimuthalAngle() ?? 0;
+          setRotationState(angle);
+        }}
       />
-
       <group
         ref={groupRef}
-        name={`${index === 1 ? "small" : "large"}`}
+        name={index === 1 ? "small" : "large"}
         position={[0, 0, 0]}
       >
-        <Suspense fallback={<Loader />}>
+        <React.Suspense fallback={<Loader />}>
           <IPhone
             scale={index === 1 ? [15, 15, 15] : [17, 17, 17]}
             item={item}
             size={size}
           />
-        </Suspense>
+        </React.Suspense>
       </group>
     </View>
   );

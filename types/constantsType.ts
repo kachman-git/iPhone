@@ -41,7 +41,7 @@ export type LoadedData = {
   duration: number;
 };
 
-export type ModelType = {
+export type ModelItem = {
   title: string;
   color: string[];
   img: string;
