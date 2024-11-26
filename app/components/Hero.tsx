@@ -7,7 +7,11 @@ import React, { useEffect, useState } from "react";
 import { heroVideo, smallHeroVideo } from "../utils";
 
 const Hero = () => {
-  const [videoSrc, setVideoSrc] = useState("");
+  const initialVideoSrc =
+    typeof window !== "undefined" && window.innerWidth < 760
+      ? smallHeroVideo
+      : heroVideo;
+  const [videoSrc, setVideoSrc] = useState(initialVideoSrc);
 
   useEffect(() => {
     const handleVideoSrcSet = () => {
@@ -52,7 +56,7 @@ const Hero = () => {
           <video
             className="pointer-events-none"
             autoPlay
-            preload="none"
+            preload="auto"
             muted
             playsInline={true}
             key={videoSrc}
