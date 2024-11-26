@@ -9,15 +9,15 @@ import { heroVideo, smallHeroVideo } from "../utils";
 const Hero = () => {
   const [videoSrc, setVideoSrc] = useState("");
 
-  const handleVideoSrcSet = () => {
-    if (window.innerWidth < 760) {
-      setVideoSrc(smallHeroVideo);
-    } else {
-      setVideoSrc(heroVideo);
-    }
-  };
-
   useEffect(() => {
+    const handleVideoSrcSet = () => {
+      if (window.innerWidth < 760) {
+        setVideoSrc(smallHeroVideo);
+      } else {
+        setVideoSrc(heroVideo);
+      }
+    };
+
     window.addEventListener("resize", handleVideoSrcSet);
 
     return () => {
@@ -39,7 +39,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="w-full h-screen sm:h-auto relative">
+    <section className="w-full relative">
       <div className="flex items-center justify-center flex-col h-5/6">
         <h2
           id="hero-heading"

@@ -7,7 +7,7 @@ import { appleImg, bagImg, searchImg } from "../utils/index";
 
 const Navbar = () => {
   return (
-    <header className="container mb-6 mx-auto pt-4 px-20 flex justify-between items-center">
+    <header className="container mb-6 mx-auto pt-4 px-10 md:px-20 flex justify-between items-center">
       <Link href={"#"}>
         <Image
           src={appleImg}
