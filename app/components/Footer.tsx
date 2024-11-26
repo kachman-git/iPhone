@@ -1,4 +1,3 @@
-import { footerLinksProps } from "@/types/constantsType";
 import React from "react";
 import { footerLinks } from "../constants";
 
