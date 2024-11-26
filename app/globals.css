@@ -28,3 +28,9 @@ canvas {
   position: relative;
   max-width: 1120px;
 }
+
+@layer utilities {
+  .common-padding {
+    @apply sm:py-32 py-20 sm:px-10 px-5;
+  }
+}

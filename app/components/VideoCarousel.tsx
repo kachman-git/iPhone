@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/all";
 import { useEffect, useRef, useState } from "react";
 import { hightlightsSlides } from "../constants";
 import { pauseImg, playImg, replayImg } from "../utils";
-import { LoadedData, VideoState, VideoSlide } from "types/constantsType";
+import { LoadedData, VideoState, VideoSlide } from "../../types/constantsType";
 
 const VideoCarousel = () => {
   const videoRef = useRef<HTMLVideoElement[]>([]);

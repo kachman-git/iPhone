@@ -61,7 +61,7 @@ function Highlight() {
   return (
     <section
       id="highlight"
-      className="w-screen overflow-hidden h-full sm:py-32 py-20 sm:px-10 px-5 bg-zinc"
+      className="w-screen overflow-hidden h-full sm:py-20 py-16 sm:px-10 px-5 bg-zinc"
     >
       <div className="screen-max-width">
         <div className="flex flex-col md:flex-row  md:items-70% md:justify-between mb-6 space-y-5 md:space-y-0">
