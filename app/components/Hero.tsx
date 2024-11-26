@@ -7,8 +7,7 @@ import React, { useEffect, useState } from "react";
 import { heroVideo, smallHeroVideo } from "../utils";
 
 const Hero = () => {
-  const vid = window.innerWidth < 760 ? smallHeroVideo : heroVideo;
-  const [videoSrc, setVideoSrc] = useState(vid);
+  const [videoSrc, setVideoSrc] = useState("");
 
   const handleVideoSrcSet = () => {
     if (window.innerWidth < 760) {
