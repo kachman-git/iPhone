@@ -63,7 +63,7 @@ const Hero = () => {
 
       <div
         id="cta"
-        className="text-center opacity-0 mt-10 pb-10 absolute bottom-10 left-0 right-0 md:relative transition-colors space-y-5 w-full "
+        className="text-center opacity-0 mt-10 pb-10  md:relative transition-colors space-y-5 w-full "
       >
         <Link
           href={"#highlight"}
