@@ -40,10 +40,10 @@ const Hero = () => {
 
   return (
     <section className="w-full relative">
-      <div className="flex items-center justify-center flex-col h-5/6">
+      <div className="flex items-center justify-center flex-col space-y-7 h-5/6">
         <h2
           id="hero-heading"
-          className="text-center text-gray mt-14 opacity-0 font-semibold text-4xl hidden md:block"
+          className="text-center text-gray mt-14 opacity-0 font-semibold text-4xl"
         >
           Iphone 15 pro
         </h2>
@@ -52,6 +52,7 @@ const Hero = () => {
           <video
             className="pointer-events-none"
             autoPlay
+            preload="none"
             muted
             playsInline={true}
             key={videoSrc}
