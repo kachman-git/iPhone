@@ -59,11 +59,11 @@ const HowItworks = () => {
         >
           <img src={chipImg} alt="chip" width={180} height={180} />
         </div>
-        <h2 className="text-7xl font-semibold">
+        <h2 className="text-4xl md:text-7xl font-semibold">
           A17 Pro chip.
           <br /> A monster win for gaming.
         </h2>
-        <p className="text-gray text-2xl font-semibold">
+        <p className="text-gray mt-5 text-xl  md:text-2xl font-semibold">
           It's here. The biggest redesign in the history of Apple GPUs.
         </p>
       </div>

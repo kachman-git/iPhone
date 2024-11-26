@@ -8,7 +8,7 @@ import { navListsProps } from "@/types/constantsType";
 
 const Navbar = () => {
   return (
-    <header className="container mx-auto pt-4 px-20 flex justify-between items-center">
+    <header className="container mb-6 mx-auto pt-4 px-20 flex justify-between items-center">
       <Link href={"#"}>
         <Image
           src={appleImg}

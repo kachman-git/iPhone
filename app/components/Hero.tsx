@@ -41,7 +41,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="w-full relative">
+    <section className="w-full h-screen sm:h-auto relative">
       <div className="flex items-center justify-center flex-col h-5/6">
         <h2
           id="hero-heading"

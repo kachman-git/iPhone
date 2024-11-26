@@ -97,7 +97,10 @@ const Features = () => {
   return (
     <section className="bg-zinc">
       <div className="screen-max-width common-padding">
-        <h2 ref={featHead} className="text-6xl text-gray mb-16 font-bold">
+        <h2
+          ref={featHead}
+          className="text-4xl md:text-6xl text-gray mb-16 font-bold"
+        >
           Explore the full story
         </h2>
         <div className="flex flex-col justify-center items-center overflow-hidden">
