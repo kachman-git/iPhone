@@ -25,7 +25,7 @@ const Footer = () => {
             Copright @ 2024 Apple Inc. All rights reserved.
           </p>
           <div className="flex">
-            {footerLinks.map((link: footerLinksProps, i: number) => (
+            {footerLinks.map((link, i) => (
               <p key={i} className="font-semibold text-gray text-xs">
                 {link}{" "}
                 {i !== footerLinks.length - 1 && (

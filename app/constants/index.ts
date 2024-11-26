@@ -3,7 +3,7 @@ import {
   hightlightsSlidesProps,
   modelsProps,
   navListsProps,
-} from "types/constantsType";
+} from "../../types/constantsType";
 import {
   blackImg,
   blueImg,
