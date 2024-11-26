@@ -14,7 +14,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Apple Iphone",
+  title: "Apple iPhone",
   description: "Get Your Iphone",
   icons: {
     icon: "/assets/images/apple.svg",
