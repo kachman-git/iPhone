@@ -1,3 +1,4 @@
+import { footerLinksProps } from "@/types/constantsType";
 import React from "react";
 import { footerLinks } from "../constants";
 
@@ -24,8 +25,8 @@ const Footer = () => {
             Copright @ 2024 Apple Inc. All rights reserved.
           </p>
           <div className="flex">
-            {footerLinks.map((link: any, i: number) => (
-              <p key={link} className="font-semibold text-gray text-xs">
+            {footerLinks.map((link: footerLinksProps, i: number) => (
+              <p key={i} className="font-semibold text-gray text-xs">
                 {link}{" "}
                 {i !== footerLinks.length - 1 && (
                   <span className="mx-2"> | </span>
